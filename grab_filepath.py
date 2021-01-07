@@ -48,18 +48,25 @@ def show_available_dirs(new_paths, orig_paths):
     return new_paths
 
 
-def copy_to_clipboard(fp):
-    print("Path copied to clipboard: %s" % fp)
+def print_filepath(fp):
+    print("/////////////////////////////////////////")
+    print("/////////////////////////////////////////")
+    print("Path to copy: ")
+    print()
+    print(fp)
+    print()
+    print("/////////////////////////////////////////")
+    print("/////////////////////////////////////////")
     exit()
    
 
 def check_if_final_dir(_dir):
     if os.path.isfile(_dir):
-        copy_to_clipboard(_dir)
+        print_filepath(_dir)
 
     paths = os.listdir(_dir)
     if len(paths) == 0:
-        copy_to_clipboard(_dir)
+        print_filepath(_dir)
     
     return paths
 
