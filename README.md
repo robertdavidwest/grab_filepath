@@ -4,11 +4,11 @@ I think I spend too much time trying to grab filepaths when I'm SSHing on a linu
 
 ## How to use 
 
-* Just type `fp` then the directory you want to search in the cmd line: 
-
-    $ fp ~/example
+* Just type `fp` then the directory you want to search in the cmd line `$ fp ~/example` 
 
 ```
+rwest ~ $ fp ~/example/
+
 #-----------------------
 Displaying 1 to 2 of 2
 
@@ -23,12 +23,10 @@ Choose: _
 
 * Follow the on screen instructions to drill down to the needed filepath.
 * Optional second parameter to limit number of entries returned per page (defaults to 30)
-* e.g. for 10 per page:
-
-    $ fp ~/some_directory 10 
+* e.g. for 10 per page: `$ fp ~/some_directory 10`
 
 ```
-rwest@01-analytics-dev-ue1a ~ $ fp ~/example/ 1
+rwest ~ $ fp ~/example/ 1
 
 #-----------------------
 Displaying 1 to 1 of 2
