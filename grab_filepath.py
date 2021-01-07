@@ -118,13 +118,17 @@ def choose_next_level(_dir):
     return os.path.join(_dir, new_paths[0])
 
 
-def main():
-    _dir = sys.argv[1]
+def main(_dir):
     while True:
         _dir = choose_next_level(_dir)
 
 
 DIRS_PER_PAGE = 30
-
 if __name__ == '__main__':
-    main()
+
+    if len(sys.argv) not in [2, 3]:
+        raise AssertionError("Must provide 'directory'")
+    if len(sys.argv) == 3:
+        DIRS_PER_PAGE = int(sys.argv[2])
+    _dir = sys.argv[1]
+    main(_dir)
