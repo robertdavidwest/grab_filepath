@@ -3,29 +3,48 @@ import os
 from pprint import pprint
 
 
+def subset_by_index(query_str, paths):
+    if not query_str[1:].isnumeric():
+        return compare_query_str_to_paths("Try again: ", paths)
+    
+    index = int(query_str[1:].strip())
+    return [paths[index - 1]]
+
+
+def subset_exact_match(query_str, paths):
+    query_str = query_str[:-1]
+    paths = [p for p in paths if query_str == p] 
+    return paths
+
+
+def subset_by_substr(query_str, paths):
+    paths = [p for p in paths if query_str in p] 
+    return paths
+
+
 def compare_query_str_to_paths(msg, paths):
     query_str = input(msg)
+    if query_str[0] == '>':
+        return subset_by_index(query_str, paths)
+
     if query_str[-1] == '/':
-        query_str = query_str[:-1]
-        paths = [p for p in paths if query_str == p] 
-    else:
-        paths = [p for p in paths if query_str in p] 
-    return paths
+        return subset_exact_match(query_str, paths)
+    
+    return subset_by_substr(query_str, paths) 
 
 
 def display_paths(paths):
     print("#-----------------------")
-    for p in paths:
-        print("> " + p)
+    for i, p in enumerate(paths):
+        print(f"> {i+1}. {p}")
 
 
 def show_available_dirs(new_paths, orig_paths):
     if len(new_paths) == 0: 
         new_paths = compare_query_str_to_paths("Try again: ", orig_paths)
-        return new_paths
-    
-    display_paths(new_paths)
-    new_paths = compare_query_str_to_paths("Choose: ", new_paths)
+    else: 
+        display_paths(new_paths)
+        new_paths = compare_query_str_to_paths("Choose: ", new_paths)
     return new_paths
 
 
