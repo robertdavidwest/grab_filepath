@@ -1,6 +1,7 @@
 #!/usr/bin/python3.6
 import sys
 import os
+import pathlib
 from pprint import pprint
 
 
@@ -88,11 +89,13 @@ def show_available_dirs(new_paths, orig_paths, _dir):
 
 
 def print_filepath(fp):
+    p = pathlib.Path(fp)
     print("/////////////////////////////////////////")
     print("/////////////////////////////////////////")
     print("Path to copy: ")
     print()
-    print(fp)
+    print()
+    print(p.absolute())
     print()
     print("/////////////////////////////////////////")
     print("/////////////////////////////////////////")
